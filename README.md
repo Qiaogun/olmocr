@@ -233,6 +233,11 @@ python -m olmocr.pipeline ./localworkspace --markdown --pdfs olmocr-sample.pdf
 ```
 > You can also visit our Docker repository on [Docker Hub](https://hub.docker.com/r/alleninstituteforai/olmocr).
 
+### Simple Frontend
+
+A minimal drag-and-drop UI is provided under `frontend/`. Open `index.html` in a browser and drop a PDF onto the page. The app posts the file to `/api/ocr` and displays Markdown for each page with **Copy MD** and **Download MD** buttons. Use **Download All** to save every page as a zip archive.
+
+
 ### Full documentation for the pipeline
 
 ```bash
