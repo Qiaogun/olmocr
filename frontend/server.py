@@ -15,14 +15,18 @@ def _extract_pages(data: bytes):
     return [page.extract_text() or '' for page in reader.pages]
 
 
+async def _process_pdf(file):
+    data = await asyncio.to_thread(file.read)
+    return await asyncio.to_thread(_extract_pages, data)
+
+
 @app.route('/api/ocr', methods=['POST'])
-async def api_ocr():
+def api_ocr():
     file = request.files.get('pdf')
     if not file:
         return jsonify({'error': 'no file uploaded'}), 400
     try:
-        data = await asyncio.to_thread(file.read)
-        pages = await asyncio.to_thread(_extract_pages, data)
+        pages = asyncio.run(_process_pdf(file))
         return jsonify({'pages': pages})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
