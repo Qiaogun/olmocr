@@ -4,3 +4,4 @@ body { font-family: Arial, sans-serif; margin: 0; padding: 20px; }
 .page-actions { margin-top: 5px; }
 button { margin-right: 5px; }
 #all-download { margin-top: 20px; }
+.markdown { white-space: pre-wrap; }

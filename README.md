@@ -242,10 +242,11 @@ python frontend/server.py
 ```
 
 Then open `http://127.0.0.1:5000/` in a browser and drop a PDF onto the page.
-The app posts the file to `/api/ocr` and displays Markdown for each page with
-**Copy MD** and **Download MD** buttons. Use **Download All** to save every page
-as a zip archive. The server reads the PDF asynchronously so large files won't
-block other requests.
+The app posts the file to `/api/ocr` where each page is sent to a local OCR
+service. `PdfReader` is only used to determine the number of pages. The returned
+Markdown is rendered on the page along with **Copy MD** and **Download MD**
+buttons. Use **Download All** to save every page as a zip archive. The server
+uses asynchronous helpers so large uploads won't block other requests.
 
 
 ### Full documentation for the pipeline

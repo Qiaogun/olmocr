@@ -43,7 +43,11 @@ function renderPages() {
   pages.forEach((text, i) => {
     const div = document.createElement('div');
     div.className = 'page-result';
-    div.innerHTML = `<h3>Page ${i + 1}</h3><pre>${text}</pre>`;
+    const md = document.createElement('div');
+    md.className = 'markdown';
+    md.innerHTML = marked.parse(text);
+    div.innerHTML = `<h3>Page ${i + 1}</h3>`;
+    div.appendChild(md);
     const actions = document.createElement('div');
     actions.className = 'page-actions';
     const copyBtn = document.createElement('button');
