@@ -131,6 +131,7 @@ are difficult to install in an existing python environment, so please do make a 
 ```bash
 conda create -n olmocr python=3.11
 conda activate olmocr
+pip install -r frontend/requirements.txt
 
 # For CPU-only operations, ex running the benchmark
 pip install olmocr[bench]
