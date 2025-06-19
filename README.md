@@ -233,6 +233,22 @@ python -m olmocr.pipeline ./localworkspace --markdown --pdfs olmocr-sample.pdf
 ```
 > You can also visit our Docker repository on [Docker Hub](https://hub.docker.com/r/alleninstituteforai/olmocr).
 
+### Simple Frontend
+
+A minimal drag-and-drop UI is provided under `frontend/`. Start it with
+
+```bash
+python frontend/server.py
+```
+
+Then open `http://127.0.0.1:5000/` in a browser and drop a PDF onto the page.
+The app posts the file to `/api/ocr` where each page is sent to a local OCR
+service. `PdfReader` is only used to determine the number of pages. The returned
+Markdown is rendered on the page along with **Copy MD** and **Download MD**
+buttons. Use **Download All** to save every page as a zip archive. The server
+uses asynchronous helpers so large uploads won't block other requests.
+
+
 ### Full documentation for the pipeline
 
 ```bash
